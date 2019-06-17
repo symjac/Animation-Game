@@ -9,21 +9,74 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
-
 body {
   font-family: Helvetica;
   color: #636363;
-  font-size: 18px;
+  font-size: 16px;
 }
 
+/* utils */
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
 .flex-center  {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.container {
-  width: 800px;
-  height: 800px;
+.center-text {
+  text-align: center;
+}
+
+/* instructions and scoring */
+.instructions  {
+  padding: 20px;
+  line-height: 30px;
+  margin-bottom: 14px;
+}
+.instructions > h1 {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.subtitle {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+  padding: 5px;
+}
+button {
+  padding: 10px;
+  background: transparent;
+  font-size: 18px;
+  border: 1px solid #8a80e6;
+  color: #8a80e6;
+  margin: 0 15px 10px;
+}
+.score-list  {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 170px;
+  padding: 10px 40px;
+  background: transparent;
+  list-style-type: circle;
+  font-size: 20px;
+  line-height: 24px;
+  border: 1px solid #8a80e6;
+  color: #8a80e6;
+}
+.previous-score  {
+  margin: 2px 5px;
+}
+/* game grid */
+.game-grid {
+  margin: 0 120px 0 0;
+  width: 520px;
+  height: 520px;
 }
 .circle {
   width: 50px;
@@ -34,11 +87,10 @@ body {
   background-color:	#ffa213;
 }
 .big {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 100px;
-  margin: 10px;
-  transition: .8s;
+  transition: .5s;
 }
 .color-even {
   background-color:	#ff69b4;
@@ -50,34 +102,34 @@ body {
   background-color: #8a80e6;
 }
 .circle.box {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0px;
-  border: none;
+  text-align: center;
+  border-radius: 3px;
   transform: rotate(90deg);
 }
-.lose-text,.win-text {
+.lose-text, .win-text {
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
   transform: rotate(-90deg);
   display: none;
 }
 .lose-text.show-text, .win-text.show-text {
   display: block;
 }
-button {
-  padding: 15px;
-  background: transparent;
-  font-size: 18px;
-  border: 1px solid #8a80e6;
-  color: #8a80e6;
-  margin: 20px;
+.circle.win-animation {
+  animation-name: celebration;
+  animation-delay: -0.5s;
+  animation-duration: 2.5s;
 }
-.instructions  {
-  padding: 20px;
-  text-align: center;
-  line-height: 30px;
+@keyframes celebration {
+  0%   {background-color: #326f6d; width: 120px; height: 120px;}
+  20%  {background-color: #85385e; width: 80px; height: 80px; border-radius: 120px;}
+  40%  {background-color: #326f6d; width: 120px; height: 120px;}
+  60%  {background-color: #85385e; width: 80px; height: 80px; border-radius: 120px;}
+  80%  {background-color: #326f6d; width: 120px; height: 120px;}
+  100% {background-color: #85385e; width: 80px; height: 80px; border-radius: 120px;}
 }

@@ -1,60 +1,74 @@
 $(document).ready(function() {
 
 var $circle = $('.circle');
+var button = document.getElementById('score-count'),
+  count = 0;
 
-$circle.on('mouseenter', $circle, function ()  {
+$circle.on('mouseenter', function ()  {
 
   var $selectedCircle = $(this);
   var $randomColor = Math.floor(Math.random()*10);
 
+
   if ($selectedCircle.hasClass('big')) {
-    $selectedCircle.removeClass('big').removeClass('color-even')
-    .removeClass('color-odd');
+    $selectedCircle.removeClass('big color-even color-odd');
   } else if ((!$selectedCircle.hasClass('big') && ($randomColor%2 == 0))) {
-      $selectedCircle.addClass('big').addClass('color-even');
+      $selectedCircle.addClass('big color-even');
   } else {
-      $selectedCircle.addClass('big').addClass('color-odd');
+      $selectedCircle.addClass('big color-odd');
   }
 
 });
 
-var button = document.getElementById('click'),
-  count = 0;
-
-$circle.on('click', $circle, function () {
+$circle.on('click', function () {
 
   var $selectedCircle = $(this);
-  var $loseText = $('<p class="lose-text show-text">Try Again.</p>');
+  var $loseText = $('<p class="lose-text show-text">Try Again</p>');
   var $winText = $('<p class="win-text show-text">You Win!</p>');
   var $selectedText = $selectedCircle.find('p');
+  var randomCircle = Math.floor(Math.random() * 25);
+  var $selectedWin = $('.circle').eq(randomCircle);
 
-  if ($selectedCircle.hasClass('box' && 'color-box')) {
-    $selectedCircle.removeClass('box').removeClass('color-box');
-    $selectedText.remove();
-  } else if ($selectedCircle.hasClass('win')) {
-    $selectedCircle.addClass('box').addClass('color-box');
-    setTimeout(function() {
+  function winCycle () {
+    $selectedCircle.addClass('box win-animation');
     $selectedCircle.append($winText);
-      },  800);
+    $selectedCircle.removeClass('win');
     count += 1;
-    button.innerHTML = "Boxes Tried: " + count;
+    button.innerHTML = count + " Circles Tried";
     setTimeout(function() {
-    $circle.removeClass('box').removeClass('color-box').removeClass('big')
-    .removeClass('color-odd').removeClass('color-even');
+    $circle.removeClass('box color-box big color-odd win-animation color-even');
     count = 0;
-    button.innerHTML = "Boxes Tried: " + count;
+    button.innerHTML = count + " Circles Tried";
     $('p').removeClass('show-text');
   }, 2000);
+    var finalCount = count;
+    var $prevScore = $('<li class ="previous-score">' + finalCount + '</li>');
+    var $scoreList = $('.score-list')
+    var $numberOfScores = $scoreList.children().length;
+    if ($numberOfScores >= 5) {
+      $scoreList.find('li').remove();
+      $scoreList.append($prevScore);
+    } else {
+      $('.list-placeholder').remove();
+      $scoreList.append($prevScore);
+    }
+    $selectedWin.addClass('win');
+  }
+
+  if ($selectedCircle.hasClass('box color-box')) {
+    $selectedCircle.removeClass('box color-box');
+    $selectedText.remove();
+  } else if ($selectedCircle.hasClass('win')) {
+    winCycle ();
   } else {
-    $selectedCircle.addClass('box').addClass('color-box');
-    setTimeout(function() {
+    $selectedCircle.addClass('box color-box');
     $selectedCircle.append($loseText);
     count += 1;
-    button.innerHTML = "Boxes Tried: " + count;
-      }, 800);
+    button.innerHTML = count + " Circles Tried";
   }
 
 });
 
+// var numberOfChildren = $element.children().length;
 
 });

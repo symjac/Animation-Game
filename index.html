@@ -21,48 +21,62 @@
 </head>
 <body>
 
-<div class="instructions">
-  <button id="click">Boxes Tried: 0</button>
-  <p>Hover on the circles to watch them change!
-  <br>Click the circle to see if you found the winning one.</p>
+<div class="instructions center-text">
+  <h1> Great, a game! How do I play?</h1>
+  <p>Hover on a circle to see it change color!  Click on a circle to see if you won.</p>
 </div>
 
-<div  class="flex-center">
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-</div>
-<div  class="flex-center">
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-</div>
-<div  class="flex-center">
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-</div>
-<div class="flex-center">
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-</div>
-<div class="flex-center">
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle win"></div>
+<div class="current-score center-text">
+  <p class ="subtitle">Current Score</p>
+  <button id="score-count">0 Circles Tried</button>
 </div>
 
+<div class="justify-center">
+  <div class ="previous-scores">
+    <p class ="subtitle">Previous 5 Scores</p>
+    <ul class="score-list">
+      <li class="list-placeholder"> </li>
+    </ul>
+  </div>
+  <div class="game-grid">
+    <div  class="flex-center">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <div  class="flex-center">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <div  class="flex-center">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <div class="flex-center">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <div class="flex-center">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle win"></div>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>
